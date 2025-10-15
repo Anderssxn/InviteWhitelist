@@ -1,0 +1,129 @@
+# InviteList Messages Configuration
+#
+# This file supports BOTH MiniMessage format AND legacy color codes (&)
+# You can use either format, or even mix them together!
+#
+# Placeholders:
+#   {player}   - Player name
+#   {inviter}  - Inviter name
+#   {count}    - Number count
+#
+# === MiniMessage Format ===
+# Examples:
+#   <red>Red text</red>
+#   <#FF5555>Hex color</#FF5555>
+#   <gradient:green:blue>Gradient</gradient>
+#   <bold>Bold</bold>, <italic>Italic</italic>
+#
+# === Legacy Color Codes ===
+# Examples:
+#   &c = Red, &a = Green, &e = Yellow, &f = White
+#   &l = Bold, &n = Underlined, &o = Italic
+#   &#FF5555 = Hex color
+
+# === COMMAND MESSAGES ===
+
+# /invite command
+invite:
+  usage: "&cUsage: /invite <player>"
+  success: "&aSuccessfully invited &f{player} &ato the whitelist!"
+  already-whitelisted: "&e{player} is already whitelisted!"
+  error: "&cAn error occurred while inviting {player}."
+  no-permission: "&cYou don't have permission to invite players!"
+  disabled: "&cInvites are currently disabled by an administrator."
+
+# /invitelist help
+help:
+  header: "&6&lInviteList Help"
+  invite: "&6/invite <player> &7- Adds a player to the whitelist."
+  help-command: "&6/invitelist help &7- Displays this help message."
+  list: "&6/invitelist list &7- Show all whitelisted players."
+  invites: "&6/invitelist invites <player> &7- See who a player has invited."
+  invitedby: "&6/invitelist invitedby <player> &7- See who invited a player."
+  remove: "&6/invitelist remove <player> &7- Remove a player from whitelist (Admin only)."
+  reload: "&6/invitelist reload <config|messages|database> &7- Reload plugin data (Console only)."
+  migrate: "&6/invitelist migrate &7- Migrate from SQLite to MySQL (Console only)."
+  toggle: "&6/invitelist toggle &7- Enable/disable invites (Console only)."
+  cache: "&6/invitelist cache &7- View cache statistics."
+
+# /invitelist list
+list:
+  loading: "&7Loading whitelist..."
+  empty: "&eThe whitelist is empty."
+  header: "&6&l━━━ Whitelisted Players ({count}) ━━━"
+  entry: "&f  {player} &7(invited by {inviter})"
+  footer: "&7Total: &f{count} &7players"
+
+# /invitelist invites
+invites:
+  usage: "&cUsage: /invitelist invites <player>"
+  player-not-found: "&cPlayer not found: &f{player}"
+  no-invites: "&e{player} has not invited anyone yet."
+  header: "&6Players invited by &f{player}&6:"
+  list-entry: "&f  - {player}"
+  footer: "&7Total: &f{count} &7players"
+
+# /invitelist invitedby
+invitedby:
+  usage: "&cUsage: /invitelist invitedby <player>"
+  player-not-found: "&cPlayer not found: &f{player}"
+  no-data: "&e{player} was not invited by anyone (or data not found)."
+  console: "&6{player} &7was added by &fConsole/Admin&7."
+  invited-by: "&6{player} &7was invited by &f{inviter}"
+  unknown: "&e{player} was invited by: &f{inviter}"
+
+# /invitelist remove (Admin only)
+remove:
+  usage: "&cUsage: /invitelist remove <player>"
+  player-not-found: "&cPlayer not found: &f{player}"
+  success: "&aRemoved &f{player} &afrom the whitelist."
+  not-whitelisted: "&e{player} is not whitelisted."
+  no-permission: "&cOnly console or admins can remove players from the whitelist!"
+
+# /invitelist reload (Console only)
+reload:
+  usage: "&cUsage: /invitelist reload <config|messages|database>"
+  console-only: "&cThis command can only be used from console!"
+  config-success: "&aConfiguration reloaded successfully!"
+  messages-success: "&aMessages reloaded successfully!"
+  database-loading: "&7Reloading database connection..."
+  database-success: "&aDatabase reloaded successfully!"
+
+# /invitelist cache
+cache:
+  info-header: "&6&l━━━ Cache Statistics ━━━"
+  size: "&7Cached Players: &f{count}"
+  status: "&7Status: &f{status}"
+  memory: "&7Memory Usage: &f{memory}"
+
+# /invitelist migrate (Console only)
+migrate:
+  console-only: "&cThis command can only be used from console!"
+  already-mysql: "&eDatabase is already using MySQL!"
+  warning-1: "&c&l⚠ WARNING ⚠"
+  warning-2: "&cThis will copy all data from SQLite to MySQL."
+  warning-3: "&cMake sure MySQL is configured correctly in config.yml!"
+  confirm: "&7Starting migration in 3 seconds... (Check console for progress)"
+  starting: "&7━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  success: "&a&l✓ Migration completed successfully!"
+  whitelist-count: "&7Migrated &f{count} &7whitelisted players"
+  invitations-count: "&7Migrated &f{count} &7invitation records"
+  next-step-1: "&e&lNext Steps:"
+  next-step-2: "&e1. Change &fconfig.yml &e-> &fdatabase.type: &e'mysql'"
+  next-step-3: "&e2. Restart server or use &f/invitelist reload database"
+  failed: "&c&l✗ Migration failed: &f{error}"
+
+# /invitelist toggle (Console only)
+toggle:
+  console-only: "&cThis command can only be used from console!"
+  enabled: "&a&l✓ Invites are now ENABLED. Players can use /invite."
+  disabled: "&c&l✗ Invites are now DISABLED. Players cannot use /invite."
+
+# General messages
+general:
+  unknown-subcommand: "&cUnknown subcommand. Use &f/invitelist help &cfor help."
+  player-not-found: "&cPlayer not found: &f{player}"
+
+# Player login
+login:
+  not-whitelisted: "&cYou are not whitelisted on this server.\n&eAsk someone to invite you with &f/invite <player> &eor do it through console."

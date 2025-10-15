@@ -1,0 +1,25 @@
+name: InviteList
+version: "1.0.0"
+main: anderssxn.com.inviteList.InviteList
+api-version: "1.21"
+authors: [anderssxn]
+description: Maintain security and an active community by allowing pre-existing server members to invite other players to the whitelist.
+website: dev.mitl.it
+
+commands:
+  invite:
+    description: Invite a player to the whitelist
+    usage: /<command> <player>
+    permission: invitelist.invite
+  invitelist:
+    description: InviteList management commands
+    usage: /<command> <help|list|invites|invitedby|remove|reload|migrate|toggle|cache>
+    aliases: [il]
+
+permissions:
+  invitelist.invite:
+    description: Allow inviting players to the whitelist
+    default: true
+  invitelist.admin:
+    description: Admin commands
+    default: op

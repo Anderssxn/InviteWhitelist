@@ -1,0 +1,38 @@
+# InviteList Configuration
+
+# === GENERAL SETTINGS ===
+# Enable or disable the invite system
+# If disabled, players cannot use /invite command
+invites-enabled: true
+
+# === DATABASE CONFIGURATION ===
+# Choose between SQLite (default, no setup needed) or MySQL (for larger servers)
+database:
+  # Database type: "sqlite" or "mysql"
+  type: "sqlite"
+
+  # MySQL settings (only used if type is "mysql")
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "invitelist"
+    username: "root"
+    password: "password"
+    max-pool-size: 10
+
+# === CACHE CONFIGURATION ===
+# In-memory cache for ultra-fast whitelist lookups
+# Essential for servers with 1000+ concurrent players or 100K+ whitelisted users
+cache:
+  # Enable auto-refresh (recommended)
+  auto-refresh: true
+
+  # How often to refresh cache from database (in seconds)
+  # Lower = more up-to-date but more database load
+  # Higher = less database load but changes take longer to sync
+  # Recommended values:
+  #   Single server: 300 (5 minutes)
+  #   Multi-server (MySQL): 30-60 (30-60 seconds)
+  #   High-traffic multi-server: 10-30 (10-30 seconds)
+  # Default: 300 seconds (5 minutes)
+  refresh-interval-seconds: 300
